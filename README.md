@@ -1,24 +1,26 @@
-# ChatterBox - User Service
+# ChatterBox - Notification Service
 
-This is the User Service for the **ChatterBox** platform — a minimal Twitter-style micro-posting application.  
-It handles user registration, authentication, and retrieval of user information.
+**Service Role:**  
+The Notification Service is responsible for simulating alerts or notifications when users create new posts or follow others in the ChatterBox platform. This mock implementation logs or stores messages in memory rather than integrating with a real notification provider.
 
-## 📌 Features
+---
 
-- User registration with basic validation
-- Secure password handling using BCrypt
-- Fetch user by ID or username
-- Designed as a stateless REST API
-- Built with Java 21 and Spring Boot 3
+## 🚀 Features
 
-## ⚙️ Tech Stack
+- Accepts notification events via a REST API.
+- Retrieves past notifications (stored in-memory).
+- Lightweight and stateless design for easy testing and simulation.
 
-- Java 21
-- Spring Boot 3.x
-- Spring Data JPA
-- H2/PostgreSQL (configurable)
-- Maven
-- JUnit 5 + Mockito for testing
-- Lombok for boilerplate reduction
+---
 
-## 📁 Project Structure
+## 📦 API Endpoints
+
+### `POST /notifications`
+Send a new notification event.
+
+**Request Body:**
+```json
+{
+  "userId": "123",
+  "message": "You have a new follower!"
+}

@@ -1,8 +1,8 @@
-package chatterbox.userservice.repository;
+package chatterbox.notification.controller;
 
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-class UserRepositoryTest {
+class NotificationControllerTest {
 }
