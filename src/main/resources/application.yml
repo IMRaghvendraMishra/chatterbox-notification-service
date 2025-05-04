@@ -12,3 +12,4 @@ spring:
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
     post-events-topic-name: chatterbox-post-events
+    follow-events-topic-name: chatterbox-follow-events
