@@ -1,4 +1,4 @@
-package com.chatterbox.notificationservie.model;
+package com.chatterbox.notificationservice.model;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

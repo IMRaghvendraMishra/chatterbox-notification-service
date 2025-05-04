@@ -1,7 +1,7 @@
-package com.chatterbox.notificationservie.service;
+package com.chatterbox.notificationservice.service;
 
-import com.chatterbox.notificationservie.dto.NotificationRequest;
-import com.chatterbox.notificationservie.model.Notification;
+import com.chatterbox.notificationservice.dto.NotificationRequest;
+import com.chatterbox.notificationservice.model.Notification;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 

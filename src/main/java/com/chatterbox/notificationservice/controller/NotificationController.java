@@ -1,8 +1,8 @@
-package com.chatterbox.notificationservie.controller;
+package com.chatterbox.notificationservice.controller;
 
-import com.chatterbox.notificationservie.dto.NotificationRequest;
-import com.chatterbox.notificationservie.model.Notification;
-import com.chatterbox.notificationservie.service.NotificationService;
+import com.chatterbox.notificationservice.dto.NotificationRequest;
+import com.chatterbox.notificationservice.model.Notification;
+import com.chatterbox.notificationservice.service.NotificationService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
