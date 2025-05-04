@@ -1,8 +1,8 @@
-package chatterbox.notification.repository;
+package chatterbox.notificationservice.service;
 
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-class NotificationRepositoryTest {
+class NotificationServiceTest {
 }

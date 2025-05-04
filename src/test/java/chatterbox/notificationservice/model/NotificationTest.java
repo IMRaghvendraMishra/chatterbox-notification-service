@@ -1,4 +1,4 @@
-package chatterbox.notification.model;
+package chatterbox.notificationservice.model;
 
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;

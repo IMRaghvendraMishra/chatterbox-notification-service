@@ -1,12 +1,14 @@
-package com.chatterbox.notification.service;
+package com.chatterbox.notificationservie.service;
 
-import com.chatterbox.notification.dto.NotificationRequest;
-import com.chatterbox.notification.model.Notification;
+import com.chatterbox.notificationservie.dto.NotificationRequest;
+import com.chatterbox.notificationservie.model.Notification;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
 @Service
+@Log4j2
 public class NotificationService {
 
     private final Map<String, List<Notification>> notifications = new HashMap<>();

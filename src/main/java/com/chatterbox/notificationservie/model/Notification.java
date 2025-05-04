@@ -1,4 +1,4 @@
-package com.chatterbox.notification.model;
+package com.chatterbox.notificationservie.model;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -14,6 +14,7 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode
 public class Notification {
+    //private String id;
     private String userId;
     private String message;
 }
