@@ -1,7 +1,7 @@
 package com.chatterbox.notificationservice.controller;
 
 import com.chatterbox.notificationservice.dto.NotificationRequest;
-import com.chatterbox.notificationservice.model.Notification;
+import com.chatterbox.notificationservice.dto.Notification;
 import com.chatterbox.notificationservice.service.NotificationService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
