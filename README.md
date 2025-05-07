@@ -21,6 +21,6 @@ Send a new notification event.
 **Request Body:**
 ```json
 {
-  "userId": "123",
+  "username": "123",
   "message": "You have a new follower!"
 }

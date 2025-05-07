@@ -15,20 +15,20 @@ public class NotificationService {
 
     public void sendNotification(NotificationRequest request) {
         notifications
-                .computeIfAbsent(request.getUserId(), k -> new ArrayList<>())
-                .add(new Notification(request.getUserId(), request.getMessage()));
+                .computeIfAbsent(request.getUsername(), k -> new ArrayList<>())
+                .add(new Notification(request.getUsername(), request.getMessage()));
         System.out.println("Notification sent: " + request.getMessage());
     }
 
-    public List<Notification> getNotifications(String userId) {
-        Notification notification1 = new Notification(userId, "message");
-        Notification notification2 = new Notification(userId, "message");
-        Notification notification3 = new Notification(userId, "message");
+    public List<Notification> getNotifications(String username) {
+        Notification notification1 = new Notification(username, "message");
+        Notification notification2 = new Notification(username, "message");
+        Notification notification3 = new Notification(username, "message");
         List<Notification> notificationList = new ArrayList<>();
         notificationList.add(notification1);
         notificationList.add(notification2);
         notificationList.add(notification3);
-        return notifications.getOrDefault(userId, notificationList);
+        return notifications.getOrDefault(username, notificationList);
     }
 
     public void deleteAll() {

@@ -14,6 +14,6 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode
 public class NotificationRequest {
-    private String userId;
+    private String username;
     private String message;
 }

@@ -27,9 +27,9 @@ public class NotificationController {
         return "Notification processed";
     }
 
-    @GetMapping("/{userId}")
-    public List<Notification> getNotifications(@PathVariable String userId) {
-        return notificationService.getNotifications(userId);
+    @GetMapping("/{username}")
+    public List<Notification> getNotifications(@PathVariable String username) {
+        return notificationService.getNotifications(username);
     }
 
     @DeleteMapping("/admin/deleteAll")
