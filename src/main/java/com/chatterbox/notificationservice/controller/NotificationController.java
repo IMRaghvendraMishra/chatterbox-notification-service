@@ -18,6 +18,9 @@ public class NotificationController {
 
     @Autowired private NotificationService notificationService;
 
+    /**
+     * This is for local testing. Actual notifications will be processed by event consumers
+     */
     @PostMapping
     public String notify(@RequestBody NotificationRequest request) {
         notificationService.sendNotification(request);
@@ -26,6 +29,12 @@ public class NotificationController {
 
     @GetMapping("/{userId}")
     public List<Notification> getNotifications(@PathVariable String userId) {
-        return notificationService.getNotificationsForUser(userId);
+        return notificationService.getNotifications(userId);
+    }
+
+    @DeleteMapping("/admin/deleteAll")
+    public String deleteAll() {
+        notificationService.deleteAll();
+        return "All notifications deleted";
     }
 }

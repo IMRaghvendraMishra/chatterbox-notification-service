@@ -20,7 +20,7 @@ public class NotificationService {
         System.out.println("Notification sent: " + request.getMessage());
     }
 
-    public List<Notification> getNotificationsForUser(String userId) {
+    public List<Notification> getNotifications(String userId) {
         Notification notification1 = new Notification(userId, "message");
         Notification notification2 = new Notification(userId, "message");
         Notification notification3 = new Notification(userId, "message");
@@ -29,5 +29,9 @@ public class NotificationService {
         notificationList.add(notification2);
         notificationList.add(notification3);
         return notifications.getOrDefault(userId, notificationList);
+    }
+
+    public void deleteAll() {
+
     }
 }
