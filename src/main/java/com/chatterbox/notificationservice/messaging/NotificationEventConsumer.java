@@ -1,6 +1,7 @@
 package com.chatterbox.notificationservice.messaging;
 
 import com.chatterbox.notificationservice.messaging.event.NotificationEvent;
+import com.chatterbox.notificationservice.storage.RedisStorageService;
 import com.chatterbox.notificationservice.util.ObjectJsonMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -17,12 +18,14 @@ import org.springframework.stereotype.Service;
 public class NotificationEventConsumer {
 
     @Autowired private ObjectJsonMapper mapper;
+    @Autowired private RedisStorageService redisStorageService;
 
     @KafkaListener(topics = "${spring.kafka.notification-events-topic-name}",
             groupId = "${spring.kafka.consumer.group-id}")
     public void consumeFollowEvent(String message) {
         // log.info("Received follow event from Kafka: {}", message);
         NotificationEvent event = mapper.jsonToNotificationEvent(message);
+        redisStorageService.addNotification(event.username(), event.message());
         log.info(event.message());
     }
 }
