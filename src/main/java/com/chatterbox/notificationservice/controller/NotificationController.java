@@ -1,39 +1,52 @@
 package com.chatterbox.notificationservice.controller;
 
 import com.chatterbox.notificationservice.dto.NotificationRequest;
-import com.chatterbox.notificationservice.dto.Notification;
 import com.chatterbox.notificationservice.service.NotificationService;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api/notifications")
-@NoArgsConstructor
-@AllArgsConstructor
 public class NotificationController {
 
-    @Autowired private NotificationService notificationService;
+    private final NotificationService notificationService;
+
+    public NotificationController(NotificationService notificationService) {
+        this.notificationService = notificationService;
+    }
 
     /**
-     * This is for local testing. Actual notifications will be processed by event consumers
+     * Endpoint to trigger a notification manually (for local testing/debugging).
      */
     @PostMapping
-    public String notify(@RequestBody NotificationRequest request) {
+    public String sendNotification(@RequestBody NotificationRequest request) {
         notificationService.sendNotification(request);
         return "Notification processed";
     }
 
+    /**
+     * Get all notifications for a given username.
+     */
     @GetMapping("/{username}")
-    public List<Notification> getNotifications(@PathVariable String username) {
+    public Set<String> getNotifications(@PathVariable String username) {
         return notificationService.getNotifications(username);
     }
 
-    @DeleteMapping("/admin/deleteAll")
-    public String deleteAll() {
+    /**
+     * Get all notifications mapped by username.
+     */
+    @GetMapping("/all")
+    public Map<String, Set<String>> getAllNotifications() {
+        return notificationService.getAll();
+    }
+
+    /**
+     * Delete all notifications (admin use).
+     */
+    @DeleteMapping("/admin/all")
+    public String deleteAllNotifications() {
         notificationService.deleteAll();
         return "All notifications deleted";
     }

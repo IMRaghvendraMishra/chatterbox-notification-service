@@ -1,37 +1,42 @@
 package com.chatterbox.notificationservice.service;
 
 import com.chatterbox.notificationservice.dto.NotificationRequest;
-import com.chatterbox.notificationservice.dto.Notification;
+import com.chatterbox.notificationservice.storage.RedisStorageService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.Map;
+import java.util.Set;
 
+/**
+* Core business service handling follower relationships.
+* Validates users, updates Redis sets, and publishes events to Kafka.
+ */
 @Service
+@RequiredArgsConstructor
 @Log4j2
 public class NotificationService {
 
-    private final Map<String, List<Notification>> notifications = new HashMap<>();
+    private final RedisStorageService redisStorageService;
 
     public void sendNotification(NotificationRequest request) {
-        notifications
-                .computeIfAbsent(request.getUsername(), k -> new ArrayList<>())
-                .add(new Notification(request.getUsername(), request.getMessage()));
-        System.out.println("Notification sent: " + request.getMessage());
+        redisStorageService.addNotification(request.getUsername(), request.getMessage());
+        log.info("Notification sent: {}", request.getMessage());
     }
 
-    public List<Notification> getNotifications(String username) {
-        Notification notification1 = new Notification(username, "message");
-        Notification notification2 = new Notification(username, "message");
-        Notification notification3 = new Notification(username, "message");
-        List<Notification> notificationList = new ArrayList<>();
-        notificationList.add(notification1);
-        notificationList.add(notification2);
-        notificationList.add(notification3);
-        return notifications.getOrDefault(username, notificationList);
+    // Dev-only debugging method
+    public Set<String> getNotifications(String username) {
+        return redisStorageService.getNotifications(username);
     }
 
-    public void deleteAll() {
+    // Dev-only debugging method
+    public Map<String, Set<String>> getAll() {
+        return redisStorageService.getAll();
+    }
 
+    public String deleteAll() {
+        redisStorageService.deleteAll();
+        return "All notifications deleted";
     }
 }
