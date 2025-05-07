@@ -12,3 +12,7 @@ spring:
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
     notification-events-topic-name: chatterbox-notification-events
+  redis:
+    host: localhost
+    port: 6379
+    timeout: 60000
